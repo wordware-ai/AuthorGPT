@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { CogIcon, GhostIcon, HeartIcon, Rocket, SirenIcon, Swords } from "lucide-react";
+import { WordwareFooter } from "@/components/custom/footer";
 
 export default function Home() {
   return (
@@ -17,7 +18,7 @@ export default function Home() {
               Any style, any storyline. What are you waiting for?
             </p>
             <a
-              href="#"
+              href="/create"
               className="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
             >
               Get started
@@ -85,7 +86,7 @@ export default function Home() {
           </div>
           <div className="grid mt-20">
             <a
-              href="#"
+              href="/create"
               className=" mx-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
             >
               Start my book
@@ -175,7 +176,7 @@ export default function Home() {
             <p>Some other paragraph. Make people want to create</p>
             <div className="mt-10">
               <a
-                href="#"
+                href="/create"
                 className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
               >
                 Begin
@@ -203,10 +204,10 @@ export default function Home() {
       <section className="bg-[url('/keys.avif')] w-full bg-center h-fit bg-cover">
         <div className="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
           <div className="mx-auto max-w-screen-sm text-center">
-            <h2 className="mb-4 text-4xl font-extrabold leading-tight text-white">Let&apos;s write.</h2>
+            <h2 className="mb-4 text-4xl font-extrabold leading-tight text-white">Let&apos;s imagine.</h2>
             <p className="mb-6 font-light text-gray-300 md:text-lg">What&apos;s your story?</p>
             <a
-              href="#"
+              href="/create"
               className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
             >
               Make me an author
@@ -214,16 +215,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <footer className="p-4 bg-white w-full">
-        <div className="mx-auto w-fit">
-          <p className="font-semibold uppercase text-center">Powered by</p>
-          <div className="max-w-md">
-            <a href="https://wordware.ai" target="_blank">
-              <Image src="/logo_black.svg" alt="Wordware logo" width="1000" height="400" />
-            </a>
-          </div>
-        </div>
-      </footer>
+      <WordwareFooter />
     </main>
   );
 }
