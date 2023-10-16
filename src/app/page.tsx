@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { CogIcon, GhostIcon, HeartIcon, Rocket, SirenIcon, Swords } from "lucide-react";
+import { GhostIcon, HeartIcon, PawPrint, Rocket, SirenIcon, Swords } from "lucide-react";
 import { WordwareFooter } from "@/components/custom/footer";
 
 export default function Home() {
@@ -9,13 +9,13 @@ export default function Home() {
         <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
           <div className="mr-auto place-self-center lg:col-span-6">
             <h1 className="max-w-2xl mb-4 text-4xl font-extrabold leading-none md:text-5xl xl:text-6xl dark:text-white">
-              Write a whole book in{" "}
-              <span className="from-purple-600 via-pink-600 to-blue-600 bg-gradient-to-r bg-clip-text text-transparent">
-                minutes
+              Stop imagining start{" "}
+              <span className="text-4xl md:text-7xl xl:text-8xl from-purple-600 via-pink-600 to-blue-600 bg-gradient-to-r bg-clip-text text-transparent">
+                writing
               </span>
             </h1>
             <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
-              Any style, any storyline. What are you waiting for?
+              Turn your imagined world into a novel
             </p>
             <a
               href="/create"
@@ -49,38 +49,52 @@ export default function Home() {
           </h2>
           <div className="grid gap-8 text-gray-500 sm:gap-12 md:grid-cols-2 lg:grid-cols-4 dark:text-gray-400">
             <div>
-              <div className="flex justify-center items-center mb-4 w-full h-36 bg-amber-100"></div>
-              <h3 className="mb-2 text-xl font-bold dark:text-white">Title 1</h3>
+              <div className="flex justify-center items-center mb-4 w-full">
+                <Image src="/cover_1.jpeg" alt="cover for Aiko's Mystical Odyssey" width="300" height="300" />
+              </div>
+              <h3 className="mb-2 text-xl font-bold dark:text-white">Aiko's Mystical Odyssey</h3>
               <p className="text-gray-500 dark:text-gray-400">
-                Plan it, create it, launch it. Collaborate seamlessly with all the organization and hit your marketing
-                goals every month with our marketing plan.
+                In a quiet Japanese village, young Aiko discovers an old book in her ancestral home. As she reads its
+                cryptic stories, they start coming to life around her.
               </p>
             </div>
             <div>
-              <div className="flex justify-center items-center mb-4 w-full h-36 bg-amber-100"></div>
-
-              <h3 className="mb-2 text-xl font-bold dark:text-white">Title 2</h3>
+              <div className="flex justify-center items-center mb-4 w-full">
+                <Image
+                  src="/cover_2.jpeg"
+                  alt="cover for Tailor-Made Trials: A Stitch in Time"
+                  width="300"
+                  height="300"
+                />
+              </div>
+              <h3 className="mb-2 text-xl font-bold dark:text-white">Tailor-Made Trials: A Stitch in Time</h3>
               <p className="text-gray-500 dark:text-gray-400">
-                Plan it, create it, launch it. Collaborate seamlessly with all the organization and hit your marketing
-                goals every month with our marketing plan.
+                A charismatic and talented fashion designer, Alex, lands a position in one of the biggest fashion houses
+                in New York only to find out his new boss is his determined and sharp-edged ex.
               </p>
             </div>
             <div>
-              <div className="flex justify-center items-center mb-4 w-full h-36 bg-amber-100"></div>
-
-              <h3 className="mb-2 text-xl font-bold dark:text-white">Title 3</h3>
+              <div className="flex justify-center items-center mb-4 w-full">
+                <Image src="/cover_3.png" alt="cover for Whispers from the Shrouded Fores" width="300" height="300" />
+              </div>
+              <h3 className="mb-2 text-xl font-bold dark:text-white">Whispers from the Shrouded Fores</h3>
               <p className="text-gray-500 dark:text-gray-400">
-                Plan it, create it, launch it. Collaborate seamlessly with all the organization and hit your marketing
-                goals every month with our marketing plan.
+                Nathanial, a reclusive architect, seeks solace in a centuries-old cabin, veiled within the confines of
+                an enigmatic, dense forest.
               </p>
             </div>
             <div>
-              <div className="flex justify-center items-center mb-4 w-full h-36 bg-amber-100"></div>
-
-              <h3 className="mb-2 text-xl font-bold dark:text-white">Title 4</h3>
+              <div className="flex justify-center items-center mb-4 w-full">
+                <Image
+                  src="/cover_4.png"
+                  alt="cover for Bella's Odyssey to the Starry Skies"
+                  width="300"
+                  height="300"
+                />
+              </div>
+              <h3 className="mb-2 text-xl font-bold dark:text-white">Bella's Odyssey to the Starry Skies</h3>
               <p className="text-gray-500 dark:text-gray-400">
-                Plan it, create it, launch it. Collaborate seamlessly with all the organization and hit your marketing
-                goals every month with our marketing plan.
+                A children&apos;s story about Bella and her bear friend who explore the stars together.
               </p>
             </div>
           </div>
@@ -101,10 +115,8 @@ export default function Home() {
       >
         <div className="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
           <div className="max-w-screen-md mb-8 lg:mb-16">
-            <h2 className="mb-4 text-4xl font-extrabold text-gray-900 dark:text-white">You are the artist</h2>
-            <p className="text-gray-500 sm:text-xl dark:text-gray-400">
-              Choose how you want you book to be written and make it personal...
-            </p>
+            <h2 className="mb-4 text-4xl font-extrabold text-gray-900 dark:text-white">Create your own world</h2>
+            <p className="text-gray-500 sm:text-xl dark:text-gray-400">Choose the genre that suits you best</p>
           </div>
           <div className="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0">
             <div>
@@ -113,8 +125,8 @@ export default function Home() {
               </div>
               <h3 className="mb-2 text-xl font-bold dark:text-white">Fantasy</h3>
               <p className="text-gray-500 dark:text-gray-400">
-                Plan it, create it, launch it. Collaborate seamlessly with all the organization and hit your marketing
-                goals every month with our marketing plan.
+                Are you a fan of J.R.R. Tolkien, magic and sorcery, and mystical creatures? Simply describe the setting
+                and the characters and turn your imagined worlds into a novel.
               </p>
             </div>
             <div>
@@ -123,8 +135,9 @@ export default function Home() {
               </div>
               <h3 className="mb-2 text-xl font-bold dark:text-white">Sci-Fi</h3>
               <p className="text-gray-500 dark:text-gray-400">
-                Protect your organization, devices and stay compliant with our structured workflows and custom
-                permissions made for you.
+                Can’t stop thinking “what-if” and “what-could-be”? From interstellar odysseys to dystopian futures, from
+                cyberpunk to space colonization. Take your readers on your journey through the wonders and perils of
+                technology, the mysteries of the universe, and the boundless potential of human ingenuity.
               </p>
             </div>
             <div>
@@ -133,8 +146,9 @@ export default function Home() {
               </div>
               <h3 className="mb-2 text-xl font-bold dark:text-white">Romance</h3>
               <p className="text-gray-500 dark:text-gray-400">
-                Auto-assign tasks, send Slack messages, and much more. Now power up with hundreds of new templates to
-                help you get started.
+                You’ve had countless romantic adventures and always dreamt of creating a novel based on your life? Or
+                maybe based on your parents’ or friend’s stories? Create a romantic novel, and spice it up with a bit of
+                drama, humor, intrigue, and suspense.
               </p>
             </div>
             <div>
@@ -143,8 +157,8 @@ export default function Home() {
               </div>
               <h3 className="mb-2 text-xl font-bold dark:text-white">Horror</h3>
               <p className="text-gray-500 dark:text-gray-400">
-                Audit-proof software built for critical financial operations like month-end close and quarterly
-                budgeting.
+                Heart-pounding journey through haunted realms, confronting malevolent spirits, monstrous creatures, and
+                unspeakable evils - invite your readers to revel in the spine-chilling novel. Just like H. P. Lovecraft.
               </p>
             </div>
             <div>
@@ -153,54 +167,58 @@ export default function Home() {
               </div>
               <h3 className="mb-2 text-xl font-bold dark:text-white">Crime</h3>
               <p className="text-gray-500 dark:text-gray-400">
-                Craft beautiful, delightful experiences for both marketing and product with real cross-company
-                collaboration.
+                Often find yourself overly observational? Create a crime novel in Arthur Conan Doyl’s style - weave
+                mysteries and keep the readers on the edge.
               </p>
             </div>
             <div>
               <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-blue-100 lg:h-12 lg:w-12 dark:bg-blue-900">
-                <CogIcon className="w-5 h-5 text-blue-600 lg:w-6 lg:h-6 dark:text-blue-300" />
+                <PawPrint className="w-5 h-5 text-blue-600 lg:w-6 lg:h-6 dark:text-blue-300" />
               </div>
-              <h3 className="mb-2 text-xl font-bold dark:text-white">Advanced</h3>
-              <p className="text-gray-500 dark:text-gray-400">Something about complete customisation</p>
+              <h3 className="mb-2 text-xl font-bold dark:text-white">Children</h3>
+              <p className="text-gray-500 dark:text-gray-400">
+                Embark on adventures, meet fantastical characters, and explore magical worlds in a novel tailored just
+                to your kid (or your inner kid). Create it yourself or let your kid do it and even be the main character
+                there!
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="bg-white dark:bg-gray-900">
-        <div className="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
-          <div className="font-light text-gray-500 sm:text-lg dark:text-gray-400">
-            <h2 className="mb-4 text-4xl font-extrabold text-gray-900 dark:text-white">Some heading</h2>
-            <p className="mb-4">Some paragraph.</p>
-            <p>Some other paragraph. Make people want to create</p>
-            <div className="mt-10">
-              <a
-                href="/create"
-                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-              >
-                Begin
-              </a>
-            </div>
-          </div>
-          <div className="grid grid-cols-2 gap-4 mt-8">
-            <Image
-              className="w-full rounded-lg aspect-[3/4] object-cover"
-              src="/typewriter.avif"
-              alt="a blank page"
-              width="300"
-              height="400"
-            />
-            <Image
-              className="mt-4 w-full lg:mt-10 rounded-lg aspect-[3/4] object-cover"
-              src="/paper.avif"
-              alt="typewriter"
-              width="300"
-              height="400"
-            />
-          </div>
-        </div>
-      </section>
+      {/*<section className="bg-white dark:bg-gray-900">*/}
+      {/*  <div className="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">*/}
+      {/*    <div className="font-light text-gray-500 sm:text-lg dark:text-gray-400">*/}
+      {/*      <h2 className="mb-4 text-4xl font-extrabold text-gray-900 dark:text-white">Some heading</h2>*/}
+      {/*      <p className="mb-4">Some paragraph.</p>*/}
+      {/*      <p>Some other paragraph. Make people want to create</p>*/}
+      {/*      <div className="mt-10">*/}
+      {/*        <a*/}
+      {/*          href="/create"*/}
+      {/*          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"*/}
+      {/*        >*/}
+      {/*          Begin*/}
+      {/*        </a>*/}
+      {/*      </div>*/}
+      {/*    </div>*/}
+      {/*    <div className="grid grid-cols-2 gap-4 mt-8">*/}
+      {/*      <Image*/}
+      {/*        className="w-full rounded-lg aspect-[3/4] object-cover"*/}
+      {/*        src="/typewriter.avif"*/}
+      {/*        alt="a blank page"*/}
+      {/*        width="300"*/}
+      {/*        height="400"*/}
+      {/*      />*/}
+      {/*      <Image*/}
+      {/*        className="mt-4 w-full lg:mt-10 rounded-lg aspect-[3/4] object-cover"*/}
+      {/*        src="/paper.avif"*/}
+      {/*        alt="typewriter"*/}
+      {/*        width="300"*/}
+      {/*        height="400"*/}
+      {/*      />*/}
+      {/*    </div>*/}
+      {/*  </div>*/}
+      {/*</section>*/}
       <section className="bg-[url('/keys.avif')] w-full bg-center h-fit bg-cover">
         <div className="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
           <div className="mx-auto max-w-screen-sm text-center">
