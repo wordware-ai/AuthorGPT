@@ -1,6 +1,7 @@
 import Image from "next/image";
-import { GhostIcon, HeartIcon, PawPrint, Rocket, SirenIcon, Swords } from "lucide-react";
+import { ArrowRight, GhostIcon, HeartIcon, PawPrint, Rocket, SirenIcon, Swords } from "lucide-react";
 import { WordwareFooter } from "@/components/custom/footer";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -17,7 +18,7 @@ export default function Home() {
             <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
               Turn your imagined world into a novel
             </p>
-            <a
+            <Link
               href="/create"
               className="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
             >
@@ -34,7 +35,7 @@ export default function Home() {
                   clipRule="evenodd"
                 ></path>
               </svg>
-            </a>
+            </Link>
           </div>
           <div className="hidden lg:mt-0 lg:col-span-6 lg:flex">
             <Image src="/books.png" alt="a pile of books" width="1920" height="1080" />
@@ -52,7 +53,7 @@ export default function Home() {
               <div className="flex justify-center items-center mb-4 w-full">
                 <Image src="/cover_1.jpeg" alt="cover for Aiko's Mystical Odyssey" width="300" height="300" />
               </div>
-              <h3 className="mb-2 text-xl font-bold dark:text-white">Aiko's Mystical Odyssey</h3>
+              <h3 className="mb-2 text-xl font-bold dark:text-white">Aiko&apos;s Mystical Odyssey</h3>
               <p className="text-gray-500 dark:text-gray-400">
                 In a quiet Japanese village, young Aiko discovers an old book in her ancestral home. As she reads its
                 cryptic stories, they start coming to life around her.
@@ -92,19 +93,19 @@ export default function Home() {
                   height="300"
                 />
               </div>
-              <h3 className="mb-2 text-xl font-bold dark:text-white">Bella's Odyssey to the Starry Skies</h3>
+              <h3 className="mb-2 text-xl font-bold dark:text-white">Bella&apos;s Odyssey to the Starry Skies</h3>
               <p className="text-gray-500 dark:text-gray-400">
                 A children&apos;s story about Bella and her bear friend who explore the stars together.
               </p>
             </div>
           </div>
           <div className="grid mt-20">
-            <a
+            <Link
               href="/create"
               className=" mx-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
             >
               Start my book
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -128,6 +129,9 @@ export default function Home() {
                 Are you a fan of J.R.R. Tolkien, magic and sorcery, and mystical creatures? Simply describe the setting
                 and the characters and turn your imagined worlds into a novel.
               </p>
+              <Link href="/create?genre=fantasy">
+                <ArrowRight className="text-gray-500 dark:text-gray-400 hover:text-gray-600 hover:dark:text-gray-500 ml-auto mr-3 mt-2" />
+              </Link>
             </div>
             <div>
               <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-blue-100 lg:h-12 lg:w-12 dark:bg-blue-900">
@@ -139,6 +143,9 @@ export default function Home() {
                 cyberpunk to space colonization. Take your readers on your journey through the wonders and perils of
                 technology, the mysteries of the universe, and the boundless potential of human ingenuity.
               </p>
+              <Link href="/create?genre=sci-fi">
+                <ArrowRight className="text-gray-500 dark:text-gray-400 hover:text-gray-600 hover:dark:text-gray-500 ml-auto mr-3 mt-2" />
+              </Link>
             </div>
             <div>
               <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-blue-100 lg:h-12 lg:w-12 dark:bg-blue-900">
@@ -150,6 +157,9 @@ export default function Home() {
                 maybe based on your parents’ or friend’s stories? Create a romantic novel, and spice it up with a bit of
                 drama, humor, intrigue, and suspense.
               </p>
+              <Link href="/create?genre=romance">
+                <ArrowRight className="text-gray-500 dark:text-gray-400 hover:text-gray-600 hover:dark:text-gray-500 ml-auto mr-3 mt-2" />
+              </Link>
             </div>
             <div>
               <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-blue-100 lg:h-12 lg:w-12 dark:bg-blue-900">
@@ -160,6 +170,9 @@ export default function Home() {
                 Heart-pounding journey through haunted realms, confronting malevolent spirits, monstrous creatures, and
                 unspeakable evils - invite your readers to revel in the spine-chilling novel. Just like H. P. Lovecraft.
               </p>
+              <Link href="/create?genre=horror">
+                <ArrowRight className="text-gray-500 dark:text-gray-400 hover:text-gray-600 hover:dark:text-gray-500 ml-auto mr-3 mt-2" />
+              </Link>
             </div>
             <div>
               <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-blue-100 lg:h-12 lg:w-12 dark:bg-blue-900">
@@ -170,6 +183,9 @@ export default function Home() {
                 Often find yourself overly observational? Create a crime novel in Arthur Conan Doyl’s style - weave
                 mysteries and keep the readers on the edge.
               </p>
+              <Link href="/create?genre=crime">
+                <ArrowRight className="text-gray-500 dark:text-gray-400 hover:text-gray-600 hover:dark:text-gray-500 ml-auto mr-3 mt-2" />
+              </Link>
             </div>
             <div>
               <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-blue-100 lg:h-12 lg:w-12 dark:bg-blue-900">
@@ -181,6 +197,9 @@ export default function Home() {
                 to your kid (or your inner kid). Create it yourself or let your kid do it and even be the main character
                 there!
               </p>
+              <Link href="/create?genre=children">
+                <ArrowRight className="text-gray-500 dark:text-gray-400 hover:text-gray-600 hover:dark:text-gray-500 ml-auto mr-3 mt-2" />
+              </Link>
             </div>
           </div>
         </div>
@@ -204,7 +223,7 @@ export default function Home() {
       {/*    <div className="grid grid-cols-2 gap-4 mt-8">*/}
       {/*      <Image*/}
       {/*        className="w-full rounded-lg aspect-[3/4] object-cover"*/}
-      {/*        src="/typewriter.avif"*/}
+      {/*        src="/typewriter.avif<a"*/}
       {/*        alt="a blank page"*/}
       {/*        width="300"*/}
       {/*        height="400"*/}
@@ -224,12 +243,12 @@ export default function Home() {
           <div className="mx-auto max-w-screen-sm text-center">
             <h2 className="mb-4 text-4xl font-extrabold leading-tight text-white">Let&apos;s imagine.</h2>
             <p className="mb-6 font-light text-gray-300 md:text-lg">What&apos;s your story?</p>
-            <a
+            <Link
               href="/create"
               className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
             >
               Make me an author
-            </a>
+            </Link>
           </div>
         </div>
       </section>
