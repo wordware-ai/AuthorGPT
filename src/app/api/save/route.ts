@@ -5,7 +5,8 @@ export const runtime = "edge";
 export async function POST(req: Request): Promise<Response> {
   // TODO: Implement save to db
   console.log("Got request", req);
-  const { email, genre, prompt, style, title, outline, chapters } = await req.json();
+  const { email, bookData } = await req.json();
+  const { genre, prompt, style, title, outline, chapters } = bookData;
   console.log("Email", email);
   console.log("Genre", genre);
   console.log("Prompt", prompt);
