@@ -66,7 +66,7 @@ export const ChaptersAndOutlineLoader: React.FC<{ genre: string; prompt: string;
       if (!genre || !prompt || !style) {
         setError("Not all values set, I need a genre, a style and a prompt!");
         return;
-      } else if (!running) {
+      } else if (!running && stage !== "done") {
         setRunning(true);
         const start = new Date();
         va.track("Outline generation started", {
@@ -91,7 +91,7 @@ export const ChaptersAndOutlineLoader: React.FC<{ genre: string; prompt: string;
           });
       }
     }
-  }, [genre, prompt, style, setOutline, ready, running, setRunning, title, setTitle, chapters, setChapters]);
+  }, [genre, prompt, style, setOutline, ready, running, setRunning, title, setTitle, chapters, setChapters, stage]);
 
   useEffect(() => {
     setReady(true);
