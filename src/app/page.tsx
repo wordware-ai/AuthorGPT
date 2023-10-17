@@ -76,9 +76,9 @@ export default function Home() {
             </div>
             <div>
               <div className="flex justify-center items-center mb-4 w-full">
-                <Image src="/cover_3.png" alt="cover for Whispers from the Shrouded Fores" width="300" height="300" />
+                <Image src="/cover_3.png" alt="cover for Whispers from the Shrouded Forest" width="300" height="300" />
               </div>
-              <h3 className="mb-2 text-xl font-bold dark:text-white">Whispers from the Shrouded Fores</h3>
+              <h3 className="mb-2 text-xl font-bold dark:text-white">Whispers from the Shrouded Forest</h3>
               <p className="text-gray-500 dark:text-gray-400">
                 Nathanial, a reclusive architect, seeks solace in a centuries-old cabin, veiled within the confines of
                 an enigmatic, dense forest.
@@ -242,10 +242,10 @@ export default function Home() {
         <div className="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
           <div className="mx-auto max-w-screen-sm text-center">
             <h2 className="mb-4 text-4xl font-extrabold leading-tight text-white">Let&apos;s imagine.</h2>
-            <p className="mb-6 font-light text-gray-300 md:text-lg">What&apos;s your story?</p>
+            <p className="mb-8 font-light text-gray-300 md:text-lg">What&apos;s your story?</p>
             <Link
               href="/create"
-              className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+              className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-lg px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
             >
               Make me an author
             </Link>

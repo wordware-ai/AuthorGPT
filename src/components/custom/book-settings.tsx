@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { GhostIcon, HeartIcon, LucideIcon, RocketIcon, SirenIcon, SwordsIcon } from "lucide-react";
+import { GhostIcon, HeartIcon, LucideIcon, PawPrintIcon, RocketIcon, SirenIcon, SwordsIcon } from "lucide-react";
 import { clsx } from "clsx";
 import { Textarea } from "@/components/ui/textarea";
 import { useQueryState } from "@/hooks/useQueryState";
@@ -18,7 +18,7 @@ export const BookSettings: React.FC = () => {
     ["romance", HeartIcon],
     ["horror", GhostIcon],
     ["crime", SirenIcon],
-    // ["advanced", CogIcon],
+    ["children", PawPrintIcon],
   ];
 
   return (
@@ -27,12 +27,12 @@ export const BookSettings: React.FC = () => {
         <p className="text-xl font-bold">Genre</p>
         <div>
           <p className="text-slate-400 dark:text-slate-300">Select the genre</p>
-          <div className="space-y-8 grid md:grid-cols-3 lg:grid-cols-5 grid-cols-2 md:gap-12 gap-8 space-y-0 p-4 select-none">
+          <div className="space-y-8 grid md:grid-cols-3 xl:grid-cols-6 grid-cols-2 md:gap-12 gap-8 p-4 select-none">
             {genres.map(([genre, Icon]) => (
               <div
                 key={genre}
                 className={clsx(
-                  "rounded-lg aspect-square flex justify-center flex-col items-center shadow-lg hover:bg-muted",
+                  "rounded-lg aspect-square flex justify-center flex-col items-center shadow-lg hover:bg-muted mt-auto",
                   {
                     "bg-muted border-2": genre === selectedGenre,
                     border: genre != selectedGenre,
@@ -79,7 +79,16 @@ export const BookSettings: React.FC = () => {
       </div>
 
       <div className="my-12">
-        <Link href={{ pathname: "/generate", query: {} }}>
+        <Link
+          href={{
+            pathname: "/generate",
+            query: {
+              genre: selectedGenre,
+              style: style,
+              prompt: prompt,
+            },
+          }}
+        >
           <Button>Let&apos;s go!</Button>
         </Link>
       </div>
