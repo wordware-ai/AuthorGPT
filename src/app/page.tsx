@@ -2,6 +2,7 @@ import Image from "next/image";
 import { ArrowRight, GhostIcon, HeartIcon, PawPrint, Rocket, SirenIcon, Swords } from "lucide-react";
 import { WordwareFooter } from "@/components/custom/footer";
 import Link from "next/link";
+import { VimeoPlayer } from "@/components/custom/VimeoPlayer";
 
 export default function Home() {
   return (
@@ -205,39 +206,38 @@ export default function Home() {
         </div>
       </section>
 
-      {/*<section className="bg-white dark:bg-gray-900">*/}
-      {/*  <div className="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">*/}
-      {/*    <div className="font-light text-gray-500 sm:text-lg dark:text-gray-400">*/}
-      {/*      <h2 className="mb-4 text-4xl font-extrabold text-gray-900 dark:text-white">Some heading</h2>*/}
-      {/*      <p className="mb-4">Some paragraph.</p>*/}
-      {/*      <p>Some other paragraph. Make people want to create</p>*/}
-      {/*      <div className="mt-10">*/}
-      {/*        <a*/}
-      {/*          href="/create"*/}
-      {/*          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"*/}
-      {/*        >*/}
-      {/*          Begin*/}
-      {/*        </a>*/}
-      {/*      </div>*/}
-      {/*    </div>*/}
-      {/*    <div className="grid grid-cols-2 gap-4 mt-8">*/}
-      {/*      <Image*/}
-      {/*        className="w-full rounded-lg aspect-[3/4] object-cover"*/}
-      {/*        src="/typewriter.avif<a"*/}
-      {/*        alt="a blank page"*/}
-      {/*        width="300"*/}
-      {/*        height="400"*/}
-      {/*      />*/}
-      {/*      <Image*/}
-      {/*        className="mt-4 w-full lg:mt-10 rounded-lg aspect-[3/4] object-cover"*/}
-      {/*        src="/paper.avif"*/}
-      {/*        alt="typewriter"*/}
-      {/*        width="300"*/}
-      {/*        height="400"*/}
-      {/*      />*/}
-      {/*    </div>*/}
-      {/*  </div>*/}
-      {/*</section>*/}
+      <section className="bg-white dark:bg-gray-900">
+        <div className="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
+          <div className="font-light text-gray-500 sm:text-lg dark:text-gray-400">
+            <h2 className="mb-4 text-4xl font-extrabold text-gray-900 dark:text-white">Tell me more</h2>
+            <VimeoPlayer />
+            <div className="mt-10">
+              <Link
+                href="/create"
+                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+              >
+                Begin
+              </Link>
+            </div>
+          </div>
+          <div className="grid grid-cols-2 gap-4 mt-8">
+            <Image
+              className="w-full rounded-lg aspect-[3/4] object-cover"
+              src="/typewriter.avif"
+              alt="a blank page"
+              width="300"
+              height="400"
+            />
+            <Image
+              className="mt-4 w-full lg:mt-10 rounded-lg aspect-[3/4] object-cover"
+              src="/paper.avif"
+              alt="typewriter"
+              width="300"
+              height="400"
+            />
+          </div>
+        </div>
+      </section>
       <section className="bg-[url('/keys.avif')] w-full bg-center h-fit bg-cover">
         <div className="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
           <div className="mx-auto max-w-screen-sm text-center">
