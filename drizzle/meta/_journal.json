@@ -1,0 +1,27 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1697588631681,
+      "tag": "0000_futuristic_blue_shield",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1697588706369,
+      "tag": "0001_narrow_mordo",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1697588805186,
+      "tag": "0002_bouncy_freak",
+      "breakpoints": true
+    }
+  ]
+}

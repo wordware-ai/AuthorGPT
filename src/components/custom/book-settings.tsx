@@ -54,7 +54,7 @@ export const BookSettings: React.FC = () => {
         <div>
           <p className="text-slate-400 dark:text-slate-300">What style should this be written in?</p>
           <Textarea
-            placeholder="e.g. J.K. Rowling..."
+            placeholder="e.g. a mix of J.K. Rowling and C.S. Lewis with a Dr Seuss flare. mysterious, adventurous style. It’s full of detailed descriptions of nature and the main character's emotions. It has elements of a romance but it’s kept in a magical atmosphere"
             className="my-4"
             rows={5}
             value={style ?? ""}
@@ -68,7 +68,7 @@ export const BookSettings: React.FC = () => {
         <div>
           <p className="text-slate-400 dark:text-slate-300">What should the story be about?</p>
           <Textarea
-            placeholder="e.g. Bob and Pete are two normal guys that..."
+            placeholder="e.g. A novel about a handsome-looking guy working in fashion industry. He has to move to New York due to his new job. It turns out that his ex is his new boss. She is strong-willed, bossy, glamorous chick who wants to revenge the guy. She makes it almost impossible for him to date other girls and gives lots of funny errands. The ending is unexpected."
             className="my-4"
             rows={10}
             value={prompt ?? ""}
