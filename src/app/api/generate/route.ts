@@ -17,14 +17,13 @@ export async function POST(req: Request): Promise<Response> {
     throw Error("No book with id: " + bookId);
   }
 
-  const { genre, style, chapters } = book.bookData as BookData;
+  const { genre, style, chapters, outline } = book.bookData as BookData;
 
   const content = book.content ?? {};
   const generatedChapters = new Set(Object.keys(content));
   const chaptersRemaining = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"].filter(
     (v) => !generatedChapters.has(v),
   );
-
   console.log("Remaining chapters", chaptersRemaining);
 
   const generateChapter = async (chapterNumber: string): Promise<void> => {
@@ -33,24 +32,28 @@ export async function POST(req: Request): Promise<Response> {
       method: "post",
       body: JSON.stringify({
         inputs: {
-          chapters_and_overviews: chapters,
+          genre: genre,
+          plot: outline,
+          chapters: chapters,
+          writing_style: style,
           chapter_number: chapterNumber,
-          writing_style: `A ${genre} story. ${style}`,
         },
       }),
     });
 
     const stream = NdJsonStream.decode(r.body!);
     let chapterContent = "";
+    let chapterTitle = "";
 
     for await (const chunk of StreamToIterable(stream)) {
       if (chunk.type === "chunk") {
         const value = chunk.value as OutputType;
         if (value.type === "prompt" && value.state === "complete") {
-          console.log("Got outputs", value.output);
+          console.log("Got outputs");
 
           if (typeof value.output === "object") {
-            chapterContent = value.output?.["chapter_text"] as string;
+            chapterTitle = value.output?.["title"] as string;
+            chapterContent = value.output?.["text"] as string;
           }
         }
       }
@@ -63,7 +66,7 @@ export async function POST(req: Request): Promise<Response> {
     console.log("Chapter", chapterNumber, "complete");
 
     const query = sql`UPDATE ${books}
-                               SET content[${chapterNumber}] = to_jsonb(${chapterContent}::text)
+                               SET content[${chapterNumber}] = jsonb_build_object('title', ${chapterTitle}::text, 'content', ${chapterContent}::text)
                                WHERE ${books.id} = ${bookId}`;
 
     // const pgDialect = new PgDialect();
