@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
 import axios from "axios";
 import { z } from "zod";
+import { BookData } from "@/lib/types";
 
 const EmailSchema = z.string().email();
 
@@ -34,15 +35,16 @@ export const CollectEmailAndPayment: React.FC<{
       return;
     }
     try {
+      const bookData: BookData = {
+        genre,
+        prompt,
+        style,
+        title,
+        outline,
+        chapters,
+      };
       const r = await axios.post("/api/save", {
-        bookData: {
-          genre,
-          prompt,
-          style,
-          title,
-          outline,
-          chapters,
-        },
+        bookData: bookData,
         email: email.trim(),
       });
 
@@ -92,10 +94,10 @@ export const CollectEmailAndPayment: React.FC<{
 
           {/* @ts-ignore */}
           <stripe-buy-button
-            buy-button-id="buy_btn_1O26SvAEou4Hi9XdVDAstiLp"
+            buy-button-id={process.env.NEXT_PUBLIC_STRIPE_BUTTON_ID}
             customer-email={email}
             client-reference-id={bookId}
-            publishable-key="pk_live_51JhXqhAEou4Hi9XdKKChziYTtMXf9eF00LwVWmN3lFexMMwdFUH6UtvOWmE4Dw5WbDkFnj1lawp4oDJAEx70Od5K00BV17ya5I"
+            publishable-key={process.env.NEXT_PUBLIC_STRIPE_PK}
           />
         </div>
       )}
