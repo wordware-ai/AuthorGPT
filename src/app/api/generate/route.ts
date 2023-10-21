@@ -4,7 +4,7 @@ import { eq, sql } from "drizzle-orm";
 import { NdJsonStream, OutputType, StreamToIterable } from "@/lib/stream";
 import { BookData } from "@/lib/types";
 
-export const maxDuration = 400;
+export const maxDuration = 300;
 export async function POST(req: Request): Promise<Response> {
   const { bookId } = await req.json();
   console.log("Book id", bookId);
