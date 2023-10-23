@@ -75,9 +75,7 @@ export const Template = ({ title, link, image }: TemplateProps) => (
           <Section>
             <Text className="font-extrabold text-4xl">Your book is ready!</Text>
             <Text className="font-extrabold text-2xl mt-6 mb-4">{title}</Text>
-            <Link href={link}>
-              <Img src={image} alt="Cover image" width="100%" className="mb-6" />
-            </Link>
+            <Img src={image} alt="Cover image" width="100%" className="mb-6" />
             <Button
               href={link}
               className="select-none items-center justify-center whitespace-nowrap rounded-md text-sm font-medium bg-black text-white px-4 py-2"
@@ -85,7 +83,7 @@ export const Template = ({ title, link, image }: TemplateProps) => (
               Read now
             </Button>
             <Hr className="mt-8" />
-            <Text>
+            <Text className="text-sm">
               Any questions or feedback simply reach out to{" "}
               <Link href={`mailto:support@wordware.ai?subject=AuthorGPT`}>support@wordware.ai</Link>.
             </Text>
