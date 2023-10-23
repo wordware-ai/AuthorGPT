@@ -1,7 +1,11 @@
 import { WordwareFooter } from "@/components/custom/footer";
 import { ChaptersAndOutlineLoader } from "@/components/custom/ChaptersAndOutlineLoader";
 
-export default function Create({ searchParams }: { searchParams: { genre: string; prompt: string; style: string } }) {
+export default function Create({
+  searchParams,
+}: {
+  searchParams: { genre: string; prompt: string; style: string; code: string | undefined };
+}) {
   return (
     <main className="flex min-h-screen flex-col w-full">
       <section className="bg-white dark:bg-gray-900">
@@ -22,6 +26,7 @@ export default function Create({ searchParams }: { searchParams: { genre: string
             genre={searchParams.genre}
             prompt={searchParams.prompt}
             style={searchParams.style}
+            code={searchParams.code}
           />
         </div>
       </section>

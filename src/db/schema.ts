@@ -1,4 +1,4 @@
-import { integer, jsonb, pgTable, text, timestamp } from "drizzle-orm/pg-core";
+import { jsonb, pgTable, text, timestamp } from "drizzle-orm/pg-core";
 
 export const books = pgTable("book", {
   id: text("id").notNull().primaryKey(),
@@ -10,4 +10,6 @@ export const books = pgTable("book", {
   prompt: text("prompt").notNull(),
   bookData: jsonb("bookData").notNull(),
   title: text("title").notNull(),
+  content: jsonb("content"),
+  image: text("image"),
 });
