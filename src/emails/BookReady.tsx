@@ -75,10 +75,12 @@ export const Template = ({ title, link, image }: TemplateProps) => (
           <Section>
             <Text className="font-extrabold text-4xl">Your book is ready!</Text>
             <Text className="font-extrabold text-2xl mt-6 mb-4">{title}</Text>
-            <Img src={image} alt="Cover image" width="100%" className="mb-6" />
+            <Link href={link}>
+              <Img src={image} alt="Cover image" width="100%" className="mb-6" />
+            </Link>
             <Button
               href={link}
-              className="select-none inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2"
+              className="select-none items-center justify-center whitespace-nowrap rounded-md text-sm font-medium bg-black text-white px-4 py-2"
             >
               Read now
             </Button>

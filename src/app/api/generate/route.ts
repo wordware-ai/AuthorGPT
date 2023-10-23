@@ -132,6 +132,7 @@ export async function POST(req: Request): Promise<Response> {
   if (rejected.length > 0) {
     // Handle the error(s)
     // For simplicity, throwing the first error, but you can handle it differently
+    console.error("Not all chapters generated", rejected);
     throw rejected;
   }
 

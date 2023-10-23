@@ -186,7 +186,7 @@ export const ChaptersAndOutlineLoader: React.FC<{ genre: string; prompt: string;
         </div>
       )}
 
-      {stage === "done" && (
+      {stage === "done" && !error && (
         <CollectEmailAndPayment
           genre={genre}
           prompt={prompt}
