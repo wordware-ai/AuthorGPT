@@ -17,41 +17,28 @@ export const contentType = "image/png";
 
 // Image generation
 export default async function Image({ params }: { params: { id: string } }) {
-  // Font
-  // const interSemiBold = fetch(new URL("./Inter-SemiBold.ttf", import.meta.url)).then((res) => res.arrayBuffer());
-
   const book = await db.query.books.findFirst({ where: eq(books.id, params.id) });
 
   return new ImageResponse(
     (
-      // ImageResponse JSX element
       <div
         style={{
-          fontSize: 128,
-          background: "white",
+          display: "flex",
+          fontSize: 60,
+          color: "black",
+          background: "#f6f6f6",
           width: "100%",
           height: "100%",
-          display: "flex",
-          alignItems: "center",
+          flexDirection: "column",
           justifyContent: "center",
+          alignItems: "center",
         }}
       >
-        {book?.title}
+        {book?.image ? <img width="100%" src={book.image} /> : <p>{book?.title}</p>}
       </div>
     ),
-    // ImageResponse options
     {
-      // For convenience, we can re-use the exported opengraph-image
-      // size config to also set the ImageResponse's width and height.
       ...size,
-      // fonts: [
-      //   {
-      //     name: "Inter",
-      //     data: await interSemiBold,
-      //     style: "normal",
-      //     weight: 400,
-      //   },
-      // ],
     },
   );
 }

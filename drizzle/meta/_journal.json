@@ -29,6 +29,13 @@
       "when": 1697590199333,
       "tag": "0003_busy_jackal",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1698026463110,
+      "tag": "0004_clever_doorman",
+      "breakpoints": true
     }
   ]
 }

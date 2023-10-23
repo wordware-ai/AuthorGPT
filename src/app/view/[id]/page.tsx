@@ -6,6 +6,7 @@ import { eq } from "drizzle-orm";
 import { books } from "@/db/schema";
 import { NotFoundError } from "@/components/custom/NotFoundError";
 import Link from "next/link";
+import Image from "next/image";
 
 interface BookContent {
   [key: string]: { title: string; content: string };
@@ -25,6 +26,9 @@ async function DisplayBook({ id }: { id: string }) {
       <h1 className="mb-8 text-5xl font-extrabold leading-none md:text-6xl xl:text-7xl dark:text-white">
         {book?.title}
       </h1>
+      {book.image && (
+        <Image src={book.image} alt={`Cover image for ${book.title}`} width={2048} height={1152} className="mb-8" />
+      )}
       {Object.entries(content)
         .sort((a, b) => parseInt(a[0]) - parseInt(b[0]))
         .map(([chapterNumber, { title, content }]) => (
@@ -53,6 +57,15 @@ async function DisplayBook({ id }: { id: string }) {
       </div>
     </>
   );
+}
+
+export async function generateMetadata({ params }: { params: { id: string } }) {
+  const book = await db.query.books.findFirst({ where: eq(books.id, params.id) });
+
+  return {
+    title: book?.title ?? "An AuthorGPT book 📚",
+    description: "An AI generated story",
+  };
 }
 
 export default async function View({ params }: { params: { id: string } }) {

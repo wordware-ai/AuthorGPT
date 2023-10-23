@@ -20,7 +20,7 @@ export async function POST(req: Request): Promise<Response> {
     throw Error("No book with id: " + bookId);
   }
 
-  const { genre, style, chapters, outline } = book.bookData as BookData;
+  const { genre, style, chapters, outline, title } = book.bookData as BookData;
 
   const content = book.content ?? {};
   const generatedChapters = new Set(Object.keys(content));
@@ -51,19 +51,19 @@ export async function POST(req: Request): Promise<Response> {
     for await (const chunk of StreamToIterable(stream)) {
       if (chunk.type === "chunk") {
         const value = chunk.value as OutputType;
-        if (value.type === "prompt" && value.state === "complete") {
+        if (value.type === "outputs") {
           console.log("Got outputs");
 
-          if (typeof value.output === "object") {
-            chapterTitle = value.output?.["title"] as string;
-            chapterContent = value.output?.["text"] as string;
+          if (typeof value.values === "object") {
+            chapterTitle = value.values?.["title"] as string;
+            chapterContent = value.values?.["text"] as string;
           }
         }
       }
     }
 
     if (chapterContent === "") {
-      throw Error("No content in chapter");
+      throw Error(`No content in chapter ${chapterNumber}`);
     }
 
     console.log("Chapter", chapterNumber, "complete");
@@ -77,9 +77,63 @@ export async function POST(req: Request): Promise<Response> {
     await db.execute(query);
   };
 
+  const generateImage = async (): Promise<void> => {
+    if (book.image) {
+      console.log("Image already generated");
+      return;
+    }
+    console.log("Generating image");
+
+    const generateImagePrompt = "247d1687-578e-4399-97fe-37934c61820e";
+    const r = await fetch(`https://app.wordware.ai/api/prompt/${generateImagePrompt}/run`, {
+      method: "post",
+      body: JSON.stringify({
+        inputs: {
+          title: title,
+          plot: outline,
+        },
+      }),
+    });
+
+    const stream = NdJsonStream.decode(r.body!);
+    let image = "";
+
+    for await (const chunk of StreamToIterable(stream)) {
+      if (chunk.type === "chunk") {
+        const value = chunk.value as OutputType;
+        if (value.type === "outputs") {
+          if (typeof value.values === "object") {
+            // @ts-ignore
+            console.log("Got outputs", value.values["7acc887a-b299-4355-8486-068fe746cf63"].generate_image);
+            // @ts-ignore
+            image = value.values["7acc887a-b299-4355-8486-068fe746cf63"].generate_image.output as string;
+          }
+        }
+      }
+    }
+
+    if (!image || image === "" || image === "Service Unavailable") {
+      console.error("Something went wrong generating image");
+      throw Error("Failed to generate image");
+    } else {
+      await db
+        .update(books)
+        .set({
+          image: image,
+        })
+        .where(eq(books.id, bookId));
+    }
+  };
+
   // Generate all remaining chapters
-  const promises = chaptersRemaining.map((chapterNumber) => generateChapter(chapterNumber));
-  await Promise.all(promises);
+  const promises = [...chaptersRemaining.map((chapterNumber) => generateChapter(chapterNumber)), generateImage()];
+  const results = await Promise.allSettled(promises);
+  const rejected = results.filter((result) => result.status === "rejected");
+  if (rejected.length > 0) {
+    // Handle the error(s)
+    // For simplicity, throwing the first error, but you can handle it differently
+    throw rejected;
+  }
 
   console.log("All chapters done");
 
@@ -89,8 +143,7 @@ export async function POST(req: Request): Promise<Response> {
 
   if (!book.completedAt) {
     await ses.sendEmail({
-      // TODO: Update sender email
-      Source: "cto@wordware.ai",
+      Source: "notifications@wordware.ai",
       Destination: {
         ToAddresses: [book.email],
       },

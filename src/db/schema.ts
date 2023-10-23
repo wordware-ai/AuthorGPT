@@ -11,4 +11,5 @@ export const books = pgTable("book", {
   bookData: jsonb("bookData").notNull(),
   title: text("title").notNull(),
   content: jsonb("content"),
+  image: text("image"),
 });
