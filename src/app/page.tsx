@@ -43,6 +43,20 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <section>
+        <a
+          href="https://www.producthunt.com/posts/authorgpt-2?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-authorgpt&#0045;2"
+          target="_blank"
+        >
+          <img
+            src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=421340&theme=light"
+            alt="AuthorGPT - Turn&#0032;your&#0032;imagined&#0032;world&#0032;into&#0032;a&#0032;novel&#0032;in&#0032;minutes | Product Hunt"
+            style={{ width: "250px", height: "54px" }}
+            width="250"
+            height="54"
+          />
+        </a>
+      </section>
 
       <section className="bg-white dark:bg-gray-900">
         <div className="py-8 lg:py-16 mx-auto max-w-screen-xl px-4">
