@@ -140,9 +140,8 @@ export async function POST(req: Request): Promise<Response> {
 
   // Send email
   const ses = new SES({ region: process.env.AWS_REGION });
-  const html = render(
-    Template({ title: book.title, link: `${process.env.VERCEL_URL}/view/${bookId}`, image: book.image! }),
-  );
+  const baseUrl = process.env.VERCEL_ENV === "production" ? "author.wordware.ai" : process.env.VERCEL_URL;
+  const html = render(Template({ title: book.title, link: `https://${baseUrl}/view/${bookId}`, image: book.image! }));
 
   if (!book.completedAt) {
     await ses.sendEmail({
