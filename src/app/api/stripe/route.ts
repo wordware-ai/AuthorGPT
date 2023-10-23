@@ -3,8 +3,6 @@ export const runtime = "edge";
 export async function POST(req: Request): Promise<Response> {
   const body = await req.json();
 
-  console.log("Body", body);
-
   console.log("Object", body.data.object);
 
   const bookId = body.data.object["client_reference_id"];

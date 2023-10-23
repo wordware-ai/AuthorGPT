@@ -3,6 +3,9 @@ import { books } from "@/db/schema";
 import { eq, sql } from "drizzle-orm";
 import { NdJsonStream, OutputType, StreamToIterable } from "@/lib/stream";
 import { BookData } from "@/lib/types";
+import { SES } from "@aws-sdk/client-ses";
+import { render } from "@jsx-email/render";
+import { Template } from "@/emails/BookReady";
 
 export const maxDuration = 300;
 export async function POST(req: Request): Promise<Response> {
@@ -80,15 +83,44 @@ export async function POST(req: Request): Promise<Response> {
 
   console.log("All chapters done");
 
-  // Send email TODO
+  // Send email
+  const ses = new SES({ region: process.env.AWS_REGION });
+  const html = render(Template({ title: book.title, link: `${process.env.VERCEL_URL}/view/${bookId}` }));
 
-  // Update db
-  await db
-    .update(books)
-    .set({
-      completedAt: new Date(),
-    })
-    .where(eq(books.id, bookId));
+  if (!book.completedAt) {
+    await ses.sendEmail({
+      // TODO: Update sender email
+      Source: "cto@wordware.ai",
+      Destination: {
+        ToAddresses: [book.email],
+      },
+      Message: {
+        Body: {
+          Html: {
+            Charset: "UTF-8",
+            Data: html,
+          },
+        },
+        Subject: {
+          Charset: "UTF-8",
+          Data: `Your AutoGPT book is ready - ${book.title}`,
+        },
+      },
+    });
+    console.log("Email sent");
+
+    // Update db
+    await db
+      .update(books)
+      .set({
+        completedAt: new Date(),
+      })
+      .where(eq(books.id, bookId));
+
+    console.log("DB updated");
+  } else {
+    console.log("Book already completed");
+  }
 
   return new Response(
     JSON.stringify({
