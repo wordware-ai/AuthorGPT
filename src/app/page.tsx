@@ -51,53 +51,56 @@ export default function Home() {
           </h2>
           <div className="grid gap-8 text-gray-500 sm:gap-12 md:grid-cols-2 lg:grid-cols-4 dark:text-gray-400">
             <div>
-              <div className="flex justify-center items-center mb-4 w-full">
-                <Image src="/cover_1.jpeg" alt="cover for Aiko's Mystical Odyssey" width="300" height="300" />
-              </div>
-              <h3 className="mb-2 text-xl font-bold dark:text-white">Aiko&apos;s Mystical Odyssey</h3>
-              <p className="text-gray-500 dark:text-gray-400">
-                In a quiet Japanese village, young Aiko discovers an old book in her ancestral home. As she reads its
-                cryptic stories, they start coming to life around her.
-              </p>
+              <Link href="https://author.wordware.ai/view/478ce6ff-77b2-4bb1-ac89-f1280f820702" target="_blank">
+                <div className="flex justify-center items-center mb-4 w-full">
+                  <Image src="/cover_1.jpeg" alt="cover for Aiko's Mystical Odyssey" width="300" height="300" />
+                </div>
+                <h3 className="mb-2 text-xl font-bold dark:text-white">A Tale of Time, Magic and Legacy</h3>
+                <p className="text-gray-500 dark:text-gray-400">
+                  In a quiet Japanese village, young Aiko discovers an old book in her ancestral home. As she reads its
+                  cryptic stories, they start coming to life around her.
+                </p>
+              </Link>
             </div>
             <div>
-              <div className="flex justify-center items-center mb-4 w-full">
-                <Image
-                  src="/cover_2.jpeg"
-                  alt="cover for Tailor-Made Trials: A Stitch in Time"
-                  width="300"
-                  height="300"
-                />
-              </div>
-              <h3 className="mb-2 text-xl font-bold dark:text-white">Tailor-Made Trials: A Stitch in Time</h3>
-              <p className="text-gray-500 dark:text-gray-400">
-                A charismatic and talented fashion designer, Alex, lands a position in one of the biggest fashion houses
-                in New York only to find out his new boss is his ex.
-              </p>
+              <Link href="https://author.wordware.ai/view/84871cc4-a68b-4329-8487-ce9cedfae44f" target="_blank">
+                <div className="flex justify-center items-center mb-4 w-full">
+                  <Image src="/cover_2.jpeg" alt="cover for The Silhouette of Love" width="300" height="300" />
+                </div>
+                <h3 className="mb-2 text-xl font-bold dark:text-white">The Silhouette of Love</h3>
+                <p className="text-gray-500 dark:text-gray-400">
+                  A charismatic and talented fashion designer, Liam, lands a position in one of the biggest fashion
+                  houses in New York only to find out his new boss is his ex.
+                </p>
+              </Link>
             </div>
             <div>
-              <div className="flex justify-center items-center mb-4 w-full">
-                <Image src="/cover_3.png" alt="cover for Whispers from the Shrouded Forest" width="300" height="300" />
-              </div>
-              <h3 className="mb-2 text-xl font-bold dark:text-white">Whispers from the Shrouded Forest</h3>
-              <p className="text-gray-500 dark:text-gray-400">
-                Nathanial, a reclusive architect, seeks solace in a centuries-old cabin, veiled within the confines of
-                an enigmatic, dense forest.
-              </p>
+              <Link href="https://author.wordware.ai/view/32801a9c-e63e-47f4-b32c-2a7b2e465808" target="_blank">
+                <div className="flex justify-center items-center mb-4 w-full">
+                  <Image
+                    src="/cover_3.png"
+                    alt="Cover image for Whispers of the Forsaken Garden"
+                    width="300"
+                    height="300"
+                  />
+                </div>
+                <h3 className="mb-2 text-xl font-bold dark:text-white">Whispers of the Forsaken Garden</h3>
+                <p className="text-gray-500 dark:text-gray-400">
+                  Charles, plagued by the loss of his job and the crumbling ruins of his marriage retreats from the
+                  wreckage of his life to a secluded cabin nestled at the edge of a vast, enigmatic forest.
+                </p>
+              </Link>
             </div>
             <div>
-              <div className="flex justify-center items-center mb-4 w-full">
-                <Image
-                  src="/cover_4.png"
-                  alt="cover for Bella's Odyssey to the Starry Skies"
-                  width="300"
-                  height="300"
-                />
-              </div>
-              <h3 className="mb-2 text-xl font-bold dark:text-white">Bella&apos;s Odyssey to the Starry Skies</h3>
-              <p className="text-gray-500 dark:text-gray-400">
-                A children&apos;s story about Bella and her bear friend who explore the stars together.
-              </p>
+              <Link href="https://author.wordware.ai/view/9eb6977f-fe9f-4240-a7bd-2974e956af2c" target="_blank">
+                <div className="flex justify-center items-center mb-4 w-full">
+                  <Image src="/cover_4.png" alt="Cover image for A Bear's Galactic Voyage" width="300" height="300" />
+                </div>
+                <h3 className="mb-2 text-xl font-bold dark:text-white">The Stellar Slumber of The Big Bear</h3>
+                <p className="text-gray-500 dark:text-gray-400">
+                  A children&apos;s story about Mia and her bear friend who explore the stars together.
+                </p>
+              </Link>
             </div>
           </div>
           <div className="grid mt-20">
