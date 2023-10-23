@@ -139,7 +139,9 @@ export async function POST(req: Request): Promise<Response> {
 
   // Send email
   const ses = new SES({ region: process.env.AWS_REGION });
-  const html = render(Template({ title: book.title, link: `${process.env.VERCEL_URL}/view/${bookId}` }));
+  const html = render(
+    Template({ title: book.title, link: `${process.env.VERCEL_URL}/view/${bookId}`, image: book.image! }),
+  );
 
   if (!book.completedAt) {
     await ses.sendEmail({
