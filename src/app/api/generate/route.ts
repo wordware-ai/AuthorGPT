@@ -106,7 +106,13 @@ export async function POST(req: Request): Promise<Response> {
             // @ts-ignore
             console.log("Got outputs", value.values["7acc887a-b299-4355-8486-068fe746cf63"].generate_image);
             // @ts-ignore
-            image = value.values["7acc887a-b299-4355-8486-068fe746cf63"].generate_image.output as string;
+            if (value.values["7acc887a-b299-4355-8486-068fe746cf63"].generate_image.error) {
+              // @ts-ignore
+              image = value.values["7acc887a-b299-4355-8486-068fe746cf63"].generate_image.output as string;
+            } else {
+              // @ts-ignore
+              console.error(value.values["7acc887a-b299-4355-8486-068fe746cf63"].generate_image.output as string);
+            }
           }
         }
       }
