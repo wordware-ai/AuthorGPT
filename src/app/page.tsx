@@ -23,7 +23,7 @@ export default function Home() {
               href="/create"
               className="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
             >
-              Get started
+              Get started - $2.99/book
               <svg
                 className="w-5 h-5 ml-2 -mr-1"
                 fill="currentColor"
@@ -53,7 +53,13 @@ export default function Home() {
             <div>
               <Link href="https://author.wordware.ai/view/478ce6ff-77b2-4bb1-ac89-f1280f820702" target="_blank">
                 <div className="flex justify-center items-center mb-4 w-full">
-                  <Image src="/cover_1.jpeg" alt="cover for Aiko's Mystical Odyssey" width="300" height="300" />
+                  <Image
+                    src="/cover_1.jpeg"
+                    alt="cover for Aiko's Mystical Odyssey"
+                    width="300"
+                    height="300"
+                    priority
+                  />
                 </div>
                 <h3 className="mb-2 text-xl font-bold dark:text-white">A Tale of Time, Magic and Legacy</h3>
                 <p className="text-gray-500 dark:text-gray-400">
@@ -108,7 +114,7 @@ export default function Home() {
               href="/create"
               className=" mx-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
             >
-              Start my book
+              Start my book - only $2.99
             </Link>
           </div>
         </div>
