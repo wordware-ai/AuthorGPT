@@ -13,6 +13,7 @@
   "dependencies": {
     "@aws-sdk/client-ses": "^3.433.0",
     "@jsx-email/all": "^2.2.0",
+    "@jsx-email/img": "^1.0.2",
     "@jsx-email/render": "^1.1.0",
     "@jsx-email/tailwind": "^2.4.0",
     "@neondatabase/serverless": "^0.6.0",
