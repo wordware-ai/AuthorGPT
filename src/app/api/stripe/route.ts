@@ -26,7 +26,7 @@ export async function POST(req: Request): Promise<Response> {
     console.log("Got upstash response", r.status);
     console.log(await r.json());
   } else {
-    console.log("No book id, probaby not a AuthorGPT purchase");
+    console.log("No book id, probably not a AuthorGPT purchase");
   }
 
   return new Response(

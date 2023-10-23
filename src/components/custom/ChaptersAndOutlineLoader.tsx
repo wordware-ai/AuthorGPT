@@ -8,11 +8,12 @@ import { CollectEmailAndPayment } from "@/components/custom/CollectEmailAndPayme
 type Stages = "waiting" | "plots" | "final_plot" | "improved_plot" | "title" | "chapters_and_overviews" | "done";
 type Genre = "fantasy" | "romance" | "sci-fi" | "children" | "horror" | "crime";
 
-export const ChaptersAndOutlineLoader: React.FC<{ genre: string; prompt: string; style: string }> = ({
-  genre,
-  prompt,
-  style,
-}) => {
+export const ChaptersAndOutlineLoader: React.FC<{
+  genre: string;
+  prompt: string;
+  style: string;
+  code: string | undefined;
+}> = ({ genre, prompt, style, code }) => {
   const [ready, setReady] = useState(false);
   const [running, setRunning] = useState(false);
   const [stage, setStage] = useState<Stages>("waiting");
@@ -194,6 +195,7 @@ export const ChaptersAndOutlineLoader: React.FC<{ genre: string; prompt: string;
           title={title}
           outline={outline}
           chapters={chapters}
+          code={code}
         />
       )}
     </>

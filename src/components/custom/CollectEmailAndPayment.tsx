@@ -16,8 +16,10 @@ export const CollectEmailAndPayment: React.FC<{
   title: string;
   outline: string;
   chapters: string;
-}> = ({ genre, prompt, style, title, outline, chapters }) => {
+  code: string | undefined;
+}> = ({ genre, prompt, style, title, outline, chapters, code }) => {
   const [bookId, setBookId] = useState(undefined);
+  const [codeValid, setCodeValid] = useState(undefined);
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -46,10 +48,12 @@ export const CollectEmailAndPayment: React.FC<{
       const r = await axios.post("/api/save", {
         bookData: bookData,
         email: email.trim(),
+        code: code,
       });
 
       console.log("Got response", r.data);
       setBookId(r.data.id);
+      setCodeValid(r.data.codeValid);
     } catch (e) {
       console.error("Error saving", e);
       setError("Something went wrong, try again");
@@ -88,6 +92,8 @@ export const CollectEmailAndPayment: React.FC<{
             )}
           </Button>
         </>
+      ) : codeValid ? (
+        <p className="font-semibold">Your book will be sent to {email} in the next few minutes! 🚀</p>
       ) : (
         <div>
           <script async src="https://js.stripe.com/v3/buy-button.js"></script>

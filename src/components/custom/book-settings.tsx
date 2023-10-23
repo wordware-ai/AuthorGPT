@@ -6,8 +6,11 @@ import { Textarea } from "@/components/ui/textarea";
 import { useQueryState } from "@/hooks/useQueryState";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
 export const BookSettings: React.FC = () => {
+  const searchParams = useSearchParams();
+  const code = searchParams.get("code");
   const [selectedGenre, setSelectedGenre] = useQueryState("genre");
   const [style, setStyle] = useQueryState("style");
   const [prompt, setPrompt] = useQueryState("prompt");
@@ -74,7 +77,6 @@ export const BookSettings: React.FC = () => {
             value={prompt ?? ""}
             onChange={(e) => setPrompt(e.target.value)}
           />
-          {/* TODO: get placeholder example */}
         </div>
       </div>
 
@@ -86,32 +88,13 @@ export const BookSettings: React.FC = () => {
               genre: selectedGenre,
               style: style,
               prompt: prompt,
+              code: code,
             },
           }}
         >
           <Button>Let&apos;s go!</Button>
         </Link>
       </div>
-
-      {/*<div>*/}
-      {/*  <div>Outline</div>*/}
-      {/*  <div>*/}
-      {/*    <div>*/}
-      {/*      <p>Here we generate and show the outline, allow it to be regenerated once (and store the first option)</p>*/}
-      {/*    </div>*/}
-      {/*  </div>*/}
-      {/*</div>*/}
-      {/*<div>*/}
-      {/*  <div>Generate</div>*/}
-      {/*  <div>*/}
-      {/*    <div>*/}
-      {/*      <p>*/}
-      {/*        Here we generate the whole book, payments are handled by Stripe, if they decide not to pay they can put*/}
-      {/*        their email in to save progress and we'll send the first chapter*/}
-      {/*      </p>*/}
-      {/*    </div>*/}
-      {/*  </div>*/}
-      {/*</div>*/}
     </>
   );
 };
