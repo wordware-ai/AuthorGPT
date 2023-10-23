@@ -72,7 +72,7 @@ export default function Home() {
               <h3 className="mb-2 text-xl font-bold dark:text-white">Tailor-Made Trials: A Stitch in Time</h3>
               <p className="text-gray-500 dark:text-gray-400">
                 A charismatic and talented fashion designer, Alex, lands a position in one of the biggest fashion houses
-                in New York only to find out his new boss is his determined and sharp-edged ex.
+                in New York only to find out his new boss is his ex.
               </p>
             </div>
             <div>

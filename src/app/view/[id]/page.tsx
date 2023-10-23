@@ -5,6 +5,7 @@ import { db } from "@/db/db";
 import { eq } from "drizzle-orm";
 import { books } from "@/db/schema";
 import { NotFoundError } from "@/components/custom/NotFoundError";
+import Link from "next/link";
 
 interface BookContent {
   [key: string]: { title: string; content: string };
@@ -34,6 +35,22 @@ async function DisplayBook({ id }: { id: string }) {
             <p className="whitespace-break-spaces mb-8">{content}</p>
           </div>
         ))}
+      <script async src="https://platform.twitter.com/widgets.js" />
+      <a
+        className="twitter-share-button"
+        href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
+          `${book.title} - a ${book.genre} novel made with the help of AI`,
+        )}`}
+        data-size="large"
+        target="_blank"
+      >
+        Tweet
+      </a>
+      <div className="my-5">
+        <Link className="hover:underline font-semibold" href="/create">
+          Create your own
+        </Link>
+      </div>
     </>
   );
 }
