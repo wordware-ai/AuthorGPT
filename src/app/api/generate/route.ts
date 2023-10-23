@@ -77,6 +77,7 @@ export async function POST(req: Request): Promise<Response> {
     await db.execute(query);
   };
 
+  let image = "";
   const generateImage = async (): Promise<void> => {
     if (book.image) {
       console.log("Image already generated");
@@ -96,7 +97,6 @@ export async function POST(req: Request): Promise<Response> {
     });
 
     const stream = NdJsonStream.decode(r.body!);
-    let image = "";
 
     for await (const chunk of StreamToIterable(stream)) {
       if (chunk.type === "chunk") {
@@ -147,7 +147,9 @@ export async function POST(req: Request): Promise<Response> {
   // Send email
   const ses = new SES({ region: process.env.AWS_REGION });
   const baseUrl = process.env.VERCEL_ENV === "production" ? "author.wordware.ai" : process.env.VERCEL_URL;
-  const html = render(Template({ title: book.title, link: `https://${baseUrl}/view/${bookId}`, image: book.image! }));
+  const html = render(
+    Template({ title: book.title, link: `https://${baseUrl}/view/${bookId}`, image: book.image ?? image }),
+  );
 
   if (!book.completedAt) {
     await ses.sendEmail({
