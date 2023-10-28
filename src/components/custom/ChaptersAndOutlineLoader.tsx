@@ -30,7 +30,7 @@ export const ChaptersAndOutlineLoader: React.FC<{
           prompt,
           genre,
           style,
-        })
+        }),
       });
 
       const stream = NdJsonStream.decode(r.body!);
