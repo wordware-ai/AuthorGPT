@@ -24,15 +24,13 @@ export const ChaptersAndOutlineLoader: React.FC<{
 
   useEffect(() => {
     const load = async () => {
-      const part1PromptId = "24508db5-815a-42a0-90d0-9493df9b3ef2";
-      const r = await fetch(`https://app.wordware.ai/api/prompt/${part1PromptId}/run`, {
+      const r = await fetch(`/api/outline`, {
         method: "post",
         body: JSON.stringify({
-          inputs: {
-            prompt: prompt,
-            writing_style: `A ${genre} story. ${style}`,
-          },
-        }),
+          prompt,
+          genre,
+          style,
+        })
       });
 
       const stream = NdJsonStream.decode(r.body!);

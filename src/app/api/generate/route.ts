@@ -42,6 +42,9 @@ export async function POST(req: Request): Promise<Response> {
           chapter_number: chapterNumber,
         },
       }),
+      headers: {
+        Authorization: `Bearer ${process.env.WORDWARE_API_KEY}`,
+      },
     });
 
     const stream = NdJsonStream.decode(r.body!);
@@ -94,6 +97,9 @@ export async function POST(req: Request): Promise<Response> {
           plot: outline,
         },
       }),
+      headers: {
+        Authorization: `Bearer ${process.env.WORDWARE_API_KEY}`,
+      },
     });
 
     const stream = NdJsonStream.decode(r.body!);
