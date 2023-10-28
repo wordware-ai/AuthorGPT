@@ -3,8 +3,6 @@ export const runtime = "edge";
 export async function POST(request: Request) {
   const { prompt, genre, style } = await request.json();
 
-  console.log("API key", process.env.WORDWARE_API_KEY);
-
   const part1PromptId = "24508db5-815a-42a0-90d0-9493df9b3ef2";
 
   // Proxy the request
