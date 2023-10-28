@@ -33,6 +33,11 @@ export const ChaptersAndOutlineLoader: React.FC<{
         }),
       });
 
+      if (r.status !== 200) {
+        setError("Something went wrong, please try again");
+        return;
+      }
+
       const stream = NdJsonStream.decode(r.body!);
 
       let outline = "";
