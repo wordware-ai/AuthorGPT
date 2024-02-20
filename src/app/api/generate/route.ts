@@ -109,15 +109,16 @@ export async function POST(req: Request): Promise<Response> {
         const value = chunk.value as OutputType;
         if (value.type === "outputs") {
           if (typeof value.values === "object") {
+            const blockId = "7acc887a-b299-4355-8486-068fe746cf63";
             // @ts-ignore
-            console.log("Got outputs", value.values["7acc887a-b299-4355-8486-068fe746cf63"].generate_image);
+            console.log("Got outputs", value.values[blockId].result);
             // @ts-ignore
-            if (value.values["7acc887a-b299-4355-8486-068fe746cf63"].generate_image.error) {
+            if (value.values[blockId].result.error) {
               // @ts-ignore
-              image = value.values["7acc887a-b299-4355-8486-068fe746cf63"].generate_image.output as string;
+              image = value.values[blockId].result.output as string;
             } else {
               // @ts-ignore
-              console.error(value.values["7acc887a-b299-4355-8486-068fe746cf63"].generate_image.output as string);
+              console.error(value.values[blockId].result.output as string);
             }
           }
         }
