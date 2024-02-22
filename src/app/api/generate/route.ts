@@ -108,10 +108,16 @@ export async function POST(req: Request): Promise<Response> {
       if (chunk.type === "chunk") {
         const value = chunk.value as OutputType;
         if (value.type === "outputs") {
+          console.log("Outputs", Object.keys(value));
           if (typeof value.values === "object") {
             const blockId = "7acc887a-b299-4355-8486-068fe746cf63";
-            // @ts-ignore
-            console.log("Got outputs", value.values[blockId].result);
+            console.log(
+              "Got outputs",
+              Object.keys(value.values),
+              Object.keys(value.values[blockId]),
+              // @ts-ignore
+              value.values[blockId].result,
+            );
             // @ts-ignore
             if (value.values[blockId].result.error) {
               // @ts-ignore
