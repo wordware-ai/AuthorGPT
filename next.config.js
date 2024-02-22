@@ -6,6 +6,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "storage.mystic.ai",
       },
+      {
+        protocol: "https",
+        hostname: "cdn.wordware.ai",
+      },
     ],
   },
 };
