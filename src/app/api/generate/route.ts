@@ -94,7 +94,7 @@ export async function POST(req: Request): Promise<Response> {
       method: "post",
       body: JSON.stringify({
         inputs: {
-          title: title ?? " ",
+          title: !title ? " " : title,
           plot: outline,
         },
       }),
