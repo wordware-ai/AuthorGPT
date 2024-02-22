@@ -102,19 +102,18 @@ export async function POST(req: Request): Promise<Response> {
       },
     });
 
+    console.log("Image gen status", r.status);
+
     const stream = NdJsonStream.decode(r.body!);
 
     for await (const chunk of StreamToIterable(stream)) {
       if (chunk.type === "chunk") {
         const value = chunk.value as OutputType;
         if (value.type === "outputs") {
-          console.log("Outputs", Object.keys(value));
           if (typeof value.values === "object") {
             const blockId = "7acc887a-b299-4355-8486-068fe746cf63";
             console.log(
               "Got outputs",
-              Object.keys(value.values),
-              Object.keys(value.values[blockId]),
               // @ts-ignore
               value.values[blockId].result,
             );
