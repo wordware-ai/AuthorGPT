@@ -126,7 +126,7 @@ export async function POST(req: Request): Promise<Response> {
     }
 
     if (!image || image === "" || image === "Service Unavailable" || image.includes("Cannot read properties of null")) {
-      console.error("Something went wrong generating image");
+      console.error("Something went wrong generating image", image);
       throw Error("Failed to generate image");
     } else {
       await db
