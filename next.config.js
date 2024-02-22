@@ -8,7 +8,7 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "cdn.wordware.ai",
+        hostname: "cdn.run.wrdwr.xyz",
       },
     ],
   },
