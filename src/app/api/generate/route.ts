@@ -21,6 +21,7 @@ export async function POST(req: Request): Promise<Response> {
   }
 
   const { genre, style, chapters, outline, title } = book.bookData as BookData;
+  console.log("Title", title);
 
   const content = book.content ?? {};
   const generatedChapters = new Set(Object.keys(content));
@@ -93,7 +94,7 @@ export async function POST(req: Request): Promise<Response> {
       method: "post",
       body: JSON.stringify({
         inputs: {
-          title: title,
+          title: title ?? "",
           plot: outline,
         },
       }),
