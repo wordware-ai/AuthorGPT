@@ -20,6 +20,8 @@ export async function POST(req: Request): Promise<Response> {
     throw Error("No book with id: " + bookId);
   }
 
+  console.log("Got book data", book.bookData);
+
   const { genre, style, chapters, outline, title } = book.bookData as BookData;
   console.log("Title", title);
 
