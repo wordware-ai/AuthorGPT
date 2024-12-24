@@ -36,11 +36,15 @@ export async function POST(req: Request): Promise<Response> {
   if (["friend", "creator"].includes(code)) {
     codeValid = true;
     console.log(`Used valid code ${code} so it's free`);
-    const r = await fetch(`https://qstash.upstash.io/v2/publish/https://${process.env.VERCEL_URL}/api/generate`, {
-      method: "post",
-      body: JSON.stringify({ bookId: id }),
-      headers: { Authorization: `Bearer ${process.env.UPSTASH_TOKEN}` },
-    });
+    console.log(process.env.VERCEL_URL);
+    const r = await fetch(
+      `https://qstash.upstash.io/v2/publish/https://27ad-98-237-185-250.ngrok-free.app/api/generate`,
+      {
+        method: "post",
+        body: JSON.stringify({ bookId: id }),
+        headers: { Authorization: `Bearer ${process.env.UPSTASH_TOKEN}` },
+      },
+    );
 
     console.log("Got upstash response", r.status);
     console.log(await r.json());

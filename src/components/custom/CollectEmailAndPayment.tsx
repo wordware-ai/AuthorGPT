@@ -52,8 +52,8 @@ export const CollectEmailAndPayment: React.FC<{
       });
 
       console.log("Got response", r.data);
-      setBookId(r.data.id);
-      setCodeValid(r.data.codeValid);
+      // setBookId(r.data.id);
+      // setCodeValid(r.data.codeValid);
     } catch (e) {
       console.error("Error saving", e);
       setError("Something went wrong, try again");

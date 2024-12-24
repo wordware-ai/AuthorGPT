@@ -7,6 +7,19 @@ import { SES } from "@aws-sdk/client-ses";
 import { render } from "@jsx-email/render";
 import { Template } from "@/emails/BookReady";
 
+interface ImageGenerationOutput {
+  nodeType: string;
+  output: {
+    type: string;
+    image_url: string;
+  };
+}
+
+interface ImageGenerationValues {
+  "Image generation": ImageGenerationOutput;
+  [key: string]: any;
+}
+
 export const maxDuration = 300;
 export async function POST(req: Request): Promise<Response> {
   const { bookId } = await req.json();
@@ -114,21 +127,18 @@ export async function POST(req: Request): Promise<Response> {
     for await (const chunk of StreamToIterable(stream)) {
       if (chunk.type === "chunk") {
         const value = chunk.value as OutputType;
+        console.log("[IMAGE] Chunk value type:", value.type);
+
         if (value.type === "outputs") {
+          console.log("[IMAGE] Got outputs. Values:", JSON.stringify(value.values, null, 2));
+
           if (typeof value.values === "object") {
-            const blockId = "7acc887a-b299-4355-8486-068fe746cf63";
-            console.log(
-              "Got outputs",
-              // @ts-ignore
-              value.values[blockId].result,
-            );
-            // @ts-ignore
-            if (value.values[blockId].result.error) {
-              // @ts-ignore
-              image = value.values[blockId].result.output as string;
-            } else {
-              // @ts-ignore
-              console.error(value.values[blockId].result.output as string);
+            // Look for the Image generation tool output
+            const values = value.values as ImageGenerationValues;
+            const imageGeneration = values["Image generation"];
+            if (imageGeneration?.output?.image_url) {
+              image = imageGeneration.output.image_url;
+              console.log("[IMAGE] Successfully set image value");
             }
           }
         }
