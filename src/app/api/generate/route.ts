@@ -127,18 +127,14 @@ export async function POST(req: Request): Promise<Response> {
     for await (const chunk of StreamToIterable(stream)) {
       if (chunk.type === "chunk") {
         const value = chunk.value as OutputType;
-        console.log("[IMAGE] Chunk value type:", value.type);
 
         if (value.type === "outputs") {
-          console.log("[IMAGE] Got outputs. Values:", JSON.stringify(value.values, null, 2));
-
           if (typeof value.values === "object") {
             // Look for the Image generation tool output
             const values = value.values as ImageGenerationValues;
             const imageGeneration = values["Image generation"];
             if (imageGeneration?.output?.image_url) {
               image = imageGeneration.output.image_url;
-              console.log("[IMAGE] Successfully set image value");
             }
           }
         }
