@@ -33,8 +33,8 @@ export async function POST(req: Request): Promise<Response> {
   console.log("Remaining chapters", chaptersRemaining);
 
   const generateChapter = async (chapterNumber: string): Promise<void> => {
-    const writeChaptersPromptId = "6c974a07-51e4-4bab-a370-4266888a378d";
-    const r = await fetch(`https://app.wordware.ai/api/released-app/${writeChaptersPromptId}/run`, {
+    const writeChaptersPromptId = "5a07f3da-d827-4b4d-86ea-e5d6d8258493";
+    const r = await fetch(`https://app.wordware.ai/api/prompt/${writeChaptersPromptId}/run`, {
       method: "post",
       body: JSON.stringify({
         inputs: {
@@ -44,7 +44,6 @@ export async function POST(req: Request): Promise<Response> {
           writing_style: style,
           chapter_number: chapterNumber,
         },
-        version: "^1.0",
       }),
       headers: {
         Authorization: `Bearer ${process.env.WORDWARE_API_KEY}`,
@@ -92,15 +91,14 @@ export async function POST(req: Request): Promise<Response> {
     }
     console.log("Generating image");
 
-    const generateImagePrompt = "0713c3bd-1db7-4c7a-ba4c-8277f8a1c7f8";
-    const r = await fetch(`https://app.wordware.ai/api/released-app/${generateImagePrompt}/run`, {
+    const generateImagePrompt = "247d1687-578e-4399-97fe-37934c61820e";
+    const r = await fetch(`https://app.wordware.ai/api/prompt/${generateImagePrompt}/run`, {
       method: "post",
       body: JSON.stringify({
         inputs: {
           title: !title ? " " : title,
           plot: outline,
         },
-        version: "^1.0",
       }),
       headers: {
         Authorization: `Bearer ${process.env.WORDWARE_API_KEY}`,
