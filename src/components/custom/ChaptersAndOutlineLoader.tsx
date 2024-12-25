@@ -44,20 +44,24 @@ export const ChaptersAndOutlineLoader: React.FC<{
       let title = "";
       let chapters = "";
       let lastGeneration: Stages | undefined = undefined;
+      let hasProcessedTitle = false;
 
       for await (const chunk of StreamToIterable(stream)) {
         if (chunk.type === "chunk") {
           const value = chunk.value as OutputType;
           if (value.type === "generation") {
+            if (lastGeneration === "title" && value.label !== "title") {
+              hasProcessedTitle = true;
+            }
             lastGeneration = value.label as Stages;
             setStage(lastGeneration);
-            console.log("Generation", value.label);
           } else if (value.type === "chunk")
             if (lastGeneration === "improved_plot") {
               outline += value.value;
               setOutline(outline);
-            } else if (lastGeneration === "title") {
+            } else if (lastGeneration === "title" && !hasProcessedTitle) {
               title += value.value;
+              console.log("TITLE", title);
               setTitle(title);
             } else if (lastGeneration === "chapters_and_overviews") {
               chapters += value.value;
