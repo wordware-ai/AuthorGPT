@@ -23,6 +23,12 @@ export const CollectEmailAndPayment: React.FC<{
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+
+  // Process title to remove everything after \n\n
+  console.log("TITLE", title);
+  const processedTitle = title.split("\n\n")[0];
+  console.log("PROCESSED TITLE", processedTitle);
+
   async function saveOutline() {
     // Save the book outline with
     setLoading(true);
@@ -41,7 +47,7 @@ export const CollectEmailAndPayment: React.FC<{
         genre,
         prompt,
         style,
-        title,
+        title: processedTitle,
         outline,
         chapters,
       };

@@ -7,6 +7,19 @@ import { SES } from "@aws-sdk/client-ses";
 import { render } from "@jsx-email/render";
 import { Template } from "@/emails/BookReady";
 
+interface ImageGenerationOutput {
+  nodeType: string;
+  output: {
+    type: string;
+    image_url: string;
+  };
+}
+
+interface ImageGenerationValues {
+  "Image generation": ImageGenerationOutput;
+  [key: string]: any;
+}
+
 export const maxDuration = 300;
 export async function POST(req: Request): Promise<Response> {
   const { bookId } = await req.json();
@@ -33,8 +46,8 @@ export async function POST(req: Request): Promise<Response> {
   console.log("Remaining chapters", chaptersRemaining);
 
   const generateChapter = async (chapterNumber: string): Promise<void> => {
-    const writeChaptersPromptId = "5a07f3da-d827-4b4d-86ea-e5d6d8258493";
-    const r = await fetch(`https://app.wordware.ai/api/prompt/${writeChaptersPromptId}/run`, {
+    const writeChaptersPromptId = "6c974a07-51e4-4bab-a370-4266888a378d";
+    const r = await fetch(`https://app.wordware.ai/api/released-app/${writeChaptersPromptId}/run`, {
       method: "post",
       body: JSON.stringify({
         inputs: {
@@ -44,6 +57,7 @@ export async function POST(req: Request): Promise<Response> {
           writing_style: style,
           chapter_number: chapterNumber,
         },
+        version: "^1.0",
       }),
       headers: {
         Authorization: `Bearer ${process.env.WORDWARE_API_KEY}`,
@@ -91,14 +105,15 @@ export async function POST(req: Request): Promise<Response> {
     }
     console.log("Generating image");
 
-    const generateImagePrompt = "247d1687-578e-4399-97fe-37934c61820e";
-    const r = await fetch(`https://app.wordware.ai/api/prompt/${generateImagePrompt}/run`, {
+    const generateImagePrompt = "0713c3bd-1db7-4c7a-ba4c-8277f8a1c7f8";
+    const r = await fetch(`https://app.wordware.ai/api/released-app/${generateImagePrompt}/run`, {
       method: "post",
       body: JSON.stringify({
         inputs: {
           title: !title ? " " : title,
           plot: outline,
         },
+        version: "^1.0",
       }),
       headers: {
         Authorization: `Bearer ${process.env.WORDWARE_API_KEY}`,
@@ -112,21 +127,14 @@ export async function POST(req: Request): Promise<Response> {
     for await (const chunk of StreamToIterable(stream)) {
       if (chunk.type === "chunk") {
         const value = chunk.value as OutputType;
+
         if (value.type === "outputs") {
           if (typeof value.values === "object") {
-            const blockId = "7acc887a-b299-4355-8486-068fe746cf63";
-            console.log(
-              "Got outputs",
-              // @ts-ignore
-              value.values[blockId].result,
-            );
-            // @ts-ignore
-            if (value.values[blockId].result.error) {
-              // @ts-ignore
-              image = value.values[blockId].result.output as string;
-            } else {
-              // @ts-ignore
-              console.error(value.values[blockId].result.output as string);
+            // Look for the Image generation tool output
+            const values = value.values as ImageGenerationValues;
+            const imageGeneration = values["Image generation"];
+            if (imageGeneration?.output?.image_url) {
+              image = imageGeneration.output.image_url;
             }
           }
         }
